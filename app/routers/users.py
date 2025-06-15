@@ -70,8 +70,8 @@ def read_user(
 def read_users(
     skip: int = 0,
     limit: int = 100,
-    db: Annotated[Session, Depends(get_db)],
-    current_user: Annotated[user_schemas.User, Depends(crud_user.get_current_active_user)]
+    db: Session = Depends(get_db), # SIMPLIFICADO: Eliminado 'Annotated'
+    current_user: user_schemas.User = Depends(crud_user.get_current_active_user) # SIMPLIFICADO: Eliminado 'Annotated'
 ):
     if current_user.role != "admin":
         raise HTTPException(
