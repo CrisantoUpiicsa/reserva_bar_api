@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy==1.4.39 # Una versión estable, ajusta si es necesario
+asyncpg             # Para PostgreSQL asíncrono
+# pyodbc            # Alternativa para Azure SQL Server si usas este driver en vez de asyncpg
+passlib[bcrypt]     # Para hashing de contraseñas
+python-jose[cryptography] # Para JWT
+python-multipart    # Para formularios y subida de archivos (útil si se necesita)
+pydantic-settings
+databases
