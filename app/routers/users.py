@@ -1,7 +1,8 @@
 ﻿# app/routers/users.py
 from datetime import timedelta
 from typing import List, Annotated
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, HTTPException, status
+from fastapi import Depends # <--- Importar Depends aquí por separado
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
@@ -69,8 +70,7 @@ def read_user(
 def read_users(
     skip: int = 0,
     limit: int = 100,
-    db: Annotated[Session, Depends(get_db)],
-    current_user: Annotated[user_schemas.User, Depends(crud_user.get_current_active_user)]
+    db: Annotated[user_schemas.User, Depends(crud_user.get_current_active_user)]
 ):
     if current_user.role != "admin":
         raise HTTPException(
