@@ -9,3 +9,4 @@ python-multipart    # Para formularios y subida de archivos (útil si se necesit
 pydantic-settings
 databases
 aiosqlite
+email-validator

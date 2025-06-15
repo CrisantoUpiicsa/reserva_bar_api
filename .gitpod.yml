@@ -1,14 +1,20 @@
 # .gitpod.yml
+# Imagen base de Gitpod con Python 3.11 preinstalado
 image: gitpod/workspace-python-3.11
 
+# Tareas a ejecutar al iniciar el espacio de trabajo
 tasks:
-  - name: Install Dependencies
+  - name: Setup Python environment # Nombre descriptivo de la tarea
     init: |
+      # Actualiza pip a la última versión
       pip install --upgrade pip
-      pip install -r requirements.txt || true # Instala dependencias si requirements.txt existe
+      # Instala todas las dependencias listadas en requirements.txt
+      pip install -r requirements.txt
     command: |
-      echo "Environment ready. Run 'uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload'"
+      # Mensaje para el usuario una vez que el entorno está listo
+      echo "Python environment is ready. Run 'uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload'"
 
+# Configuración de puertos
 ports:
   - port: 8000
-    onOpen: open-preview
+    onOpen: open-browser # Abre el puerto 8000 directamente en una nueva pestaña del navegador
