@@ -8,3 +8,4 @@ python-jose[cryptography] # Para JWT
 python-multipart    # Para formularios y subida de archivos (útil si se necesita)
 pydantic-settings
 databases
+aiosqlite
